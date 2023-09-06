@@ -1,16 +1,8 @@
 FROM python:3-alpine
-
-WORKDIR /app
-
-COPY requirements.txt ./
-
 RUN apk update
-RUN apk add bash
-
+RUN apk add git
+RUN git clone https://github.com/dqmdz/basura.git
+WORKDIR /basura
 RUN pip install -r requirements.txt
 
-COPY app.py app.py
-
-EXPOSE 5000
-
-CMD ["flask", "run", "--host", "0.0.0.0", "--port", "5000"]
+CMD [ "sh", "-c", "coverage run -m unittest && coverage report -m && python -m app.suma " ]
