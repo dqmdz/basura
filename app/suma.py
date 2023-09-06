@@ -1,0 +1,7 @@
+def suma(a, b):
+    return a + b
+
+
+if __name__ == '__main__':
+    print('Yo soy la diva de este programa')
+    print(suma(3, 4))
